@@ -50,10 +50,16 @@ publishing {
     }
 
     repositories {
-        maven("https://repo.repsy.io/mvn/${property("repsyUsername")}/${property("repsyRepoName")}") {
+        maven(
+            "https://repo.repsy.io/mvn/${(project.findProperty("repsyUsername") ?: System.getProperty("REPSY_USERNAME"))}/${
+                property(
+                    "repsyRepoName"
+                )
+            }"
+        ) {
             credentials {
-                username = property("repsyUsername") as String
-                password = property("repsyPassword") as String
+                username = (project.findProperty("repsyUsername") ?: System.getProperty("REPSY_USERNAME")) as String
+                password = (project.findProperty("repsyPassword") ?: System.getProperty("REPSY_PASSWORD")) as String
             }
         }
     }
