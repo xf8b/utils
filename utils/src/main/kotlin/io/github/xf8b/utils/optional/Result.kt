@@ -36,7 +36,8 @@ package io.github.xf8b.utils.optional
  * * [success]: when the result has been computed and there are no errors
  * * [pass]: when there is no result computed but no error
  * * [failure]: when an error has happened during the computation of the result
- * **Note: The [result] may not be null.**
+ *
+ * **Note: When using [success], the [result] passed in may not be null.**
  */
 class Result<out T>(result: T?, errorMessage: String?, val resultType: ResultType) {
     /**
