@@ -9,6 +9,9 @@ plugins {
 fun property(name: String): Any = project.findProperty(name)
     ?: throw NoSuchElementException("No property found for name $name!")
 
+fun propertyOrEnv(propertyName: String, envName: String): Any = project.findProperty(propertyName)
+    ?: System.getenv(envName)
+
 group = property("mavenGroup")
 version = property("currentVersion")
 
@@ -51,15 +54,11 @@ publishing {
 
     repositories {
         maven(
-            "https://repo.repsy.io/mvn/${(project.findProperty("repsyUsername") ?: System.getProperty("REPSY_USERNAME"))}/${
-                property(
-                    "repsyRepoName"
-                )
-            }"
+            "https://repo.repsy.io/mvn/${propertyOrEnv("repsyUsername", "REPSY_USERNAME")}/${property("repsyRepoName")}"
         ) {
             credentials {
-                username = (project.findProperty("repsyUsername") ?: System.getProperty("REPSY_USERNAME")) as String
-                password = (project.findProperty("repsyPassword") ?: System.getProperty("REPSY_PASSWORD")) as String
+                username = propertyOrEnv("repsyUsername", "REPSY_USERNAME") as String
+                password = propertyOrEnv("repsyPassword", "REPSY_PASSWORD") as String
             }
         }
     }
