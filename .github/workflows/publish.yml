@@ -1,6 +1,10 @@
 name: Publish to Repsy
 
-on: [ push, pull_request ]
+on:
+  push:
+    branches: [ production ]
+  pull_request:
+    branches: [ production ]
 
 jobs:
   build:
