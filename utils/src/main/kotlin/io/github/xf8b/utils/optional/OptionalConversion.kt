@@ -17,6 +17,8 @@
  * along with Utils.  If not, see <https://www.gnu.org/licenses/>.
  */
 
+@file:JvmName("OptionalConversion")
+
 package io.github.xf8b.utils.optional
 
 import java.util.*
@@ -25,3 +27,22 @@ import java.util.*
 fun <T> T?.toOptional(): Optional<T> = Optional.ofNullable(this)
 
 fun <T> Optional<T>.toValueOrNull(): T? = this.orElse(null)
+
+/**
+ * Note: [T] is the result type, and the [String] is the error message.
+ *
+ * @return A [Pair] of an Optional<[T]> (the result) and an Optional<[String]> (the error message).
+ */
+fun <T> Result<T>.toOptional(): Pair<Optional<T>, Optional<String>> = result.toOptional() to errorMessage.toOptional()
+
+/**
+ * Note: [T] is the result type, and the [String] is the error message.
+ *
+ * @return A [Result] from the [Pair].
+ */
+fun <T> Pair<Optional<T>, Optional<String>>.toResult(): Result<T> = when {
+    first.isEmpty && second.isEmpty -> Result.pass()
+    first.isEmpty -> Result.failure(second.get())
+    second.isEmpty -> Result.success(first.get())
+    else -> throw IllegalStateException("All branches should have been accounted for")
+}
