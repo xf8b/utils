@@ -43,6 +43,11 @@ class Result<out T>(result: T?, errorMessage: String?, val resultType: ResultTyp
     /**
      * The result. **May be null**.
      * Check that the [resultType] is [ResultType.SUCCESS] before accessing this.
+     *
+     * Getter returns a **non-null** value.
+     * Safe to use non-null asserted call or [java.util.Objects.requireNonNull].
+     *
+     * Throws [NoSuchElementException] if no result is present.
      */
     val result: T? = result
         get() = field ?: throw NoSuchElementException("No result is present!")
@@ -51,6 +56,11 @@ class Result<out T>(result: T?, errorMessage: String?, val resultType: ResultTyp
      * The error message, if there was any error. **May be null**.
      * Check that the [resultType] is [ResultType.FAILURE] before accessing this.
      * Intended for showing an error message to the user when there is an error, or for an exception message.
+     *
+     * Getter returns a **non-null** value.
+     * Safe to use non-null asserted call or [java.util.Objects.requireNonNull].
+     *
+     * Throws [NoSuchElementException] if no error message is present.
      */
     val errorMessage: String? = errorMessage
         get() = field ?: throw NoSuchElementException("No error message is present!")
@@ -91,4 +101,44 @@ class Result<out T>(result: T?, errorMessage: String?, val resultType: ResultTyp
          */
         FAILURE;
     }
+
+    fun isResultPresent() = try {
+        result.let { true }
+    } catch (exception: NoSuchElementException) {
+        false
+    }
+
+    fun isErrorMessagePresent() = try {
+        errorMessage.let { true }
+    } catch (exception: NoSuchElementException) {
+        false
+    }
+
+    fun isPass() = !isErrorMessagePresent() && !isResultPresent()
+
+    override fun equals(other: Any?): Boolean {
+        if (this === other) return true
+        if (javaClass != other?.javaClass) return false
+
+        other as Result<*>
+
+        if (result != other.result) return false
+        if (errorMessage != other.errorMessage) return false
+        if (resultType != other.resultType) return false
+
+        return true
+    }
+
+    override fun hashCode(): Int {
+        var result = result?.hashCode() ?: 0
+        result = 31 * result + (errorMessage?.hashCode() ?: 0)
+        result = 31 * result + resultType.hashCode()
+        return result
+    }
+
+    override fun toString(): String = "Result(" +
+            "result=$result, " +
+            "errorMessage=$errorMessage, " +
+            "resultType=$resultType" +
+            ")"
 }
