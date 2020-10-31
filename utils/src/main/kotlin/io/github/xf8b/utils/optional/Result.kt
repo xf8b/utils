@@ -38,12 +38,19 @@ package io.github.xf8b.utils.optional
  * * [failure]: when an error has happened during the computation of the result
  *
  * **Note: When using [success], the [result] passed in may not be null.**
+ *
+ * @property result the possibly null result
+ * @property errorMessage the possibly null error message
+ * @property resultType the non-null result type
+ * @constructor recommended to use [success], [failure] or [pass] instead of the constructor
+ * @since 1.0.0-alpha1
+ * @author xf8b
  */
 class Result<out T>(result: T?, errorMessage: String?, val resultType: ResultType) {
     /**
      * The result. **May be null**.
      *
-     * Check that the [resultType] is [ResultType.SUCCESS] before accessing this.
+     * Check that the [resultType] is [ResultType.SUCCESS] or use [isSuccess] before accessing this.
      *
      * Getter returns a **non-null** value.
      * Safe to use non-null asserted call or [java.util.Objects.requireNonNull].
@@ -56,7 +63,7 @@ class Result<out T>(result: T?, errorMessage: String?, val resultType: ResultTyp
     /**
      * The error message, if there was any error. **May be null**.
      *
-     * Check that the [resultType] is [ResultType.FAILURE] before accessing this.
+     * Check that the [resultType] is [ResultType.FAILURE] or use [isFailure] before accessing this.
      *
      * Intended for showing an error message to the user when there is an error, or for an exception message.
      *
@@ -105,32 +112,30 @@ class Result<out T>(result: T?, errorMessage: String?, val resultType: ResultTyp
         FAILURE;
     }
 
-    /**
-     * Getter for if any [result] is present.
-     *
-     * Useful for making sure that [result] getter will not throw [NoSuchElementException].
-     */
-    fun isResultPresent() = try {
-        result.let { true }
-    } catch (exception: NoSuchElementException) {
-        false
-    }
+    @Deprecated(message = "Use isSuccess - Scheduled for removal in alpha5", replaceWith = ReplaceWith("isSuccess()"))
+    fun isResultPresent() = isSuccess()
 
     /**
-     * Getter for if any [errorMessage] is present.
+     * Getter for if this result's type is a [ResultType.SUCCESS].
      *
-     * Useful for making sure that [errorMessage] getter will not throw [NoSuchElementException].
+     * Useful for code that should be executed when there is a successful result.
      */
-    fun isErrorMessagePresent() = try {
-        errorMessage.let { true }
-    } catch (exception: NoSuchElementException) {
-        false
-    }
+    fun isSuccess() = resultType == ResultType.SUCCESS
+
+    @Deprecated(message = "Use isFailure - Scheduled for removal in alpha5", replaceWith = ReplaceWith("isFailure()"))
+    fun isErrorMessagePresent() = isFailure()
 
     /**
-     * Getter for if this result is a [ResultType.PASS].
+     * Getter for if this result's type is a [ResultType.FAILURE].
      *
-     * Useful for making sure that both [result] and [errorMessage] getters will not throw [NoSuchElementException].
+     * Useful for code that should be executed when there is a failed result.
+     */
+    fun isFailure() = resultType == ResultType.FAILURE
+
+    /**
+     * Getter for if this result's type is a [ResultType.PASS].
+     *
+     * Useful for code that should be executed when there is a passed result.
      */
     fun isPass() = resultType == ResultType.PASS
 

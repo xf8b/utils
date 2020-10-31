@@ -23,14 +23,14 @@ import org.junit.Assert.assertFalse
 import org.junit.Assert.assertTrue
 import org.junit.Test
 
-class ResultTest {
+class ResultTests {
     @Test
     fun `test result isX`() {
         val result: Result<Number> = Result.success(2.0f)
 
-        assertFalse(result.isErrorMessagePresent())
+        assertFalse(result.isFailure())
         assertFalse(result.isPass())
-        assertTrue(result.isResultPresent())
+        assertTrue(result.isSuccess())
     }
 
     @Test
