@@ -91,21 +91,19 @@ class SemanticVersion(version: String) {
     }
 
     override fun hashCode(): Int {
-        var result = majorVersion
-        result = 31 * result + minorVersion
-        result = 31 * result + patchVersion
+        var result = majorVersion.hashCode()
+        result = 31 * result + minorVersion.hashCode()
+        result = 31 * result + patchVersion.hashCode()
         result = 31 * result + preRelease.hashCode()
         result = 31 * result + buildMetadata.hashCode()
         return result
     }
 
-    override fun toString(): String {
-        return "SemanticVersion(" +
-                "majorVersion=$majorVersion, " +
-                "minorVersion=$minorVersion, " +
-                "patchVersion=$patchVersion, " +
-                "preRelease='$preRelease', " +
-                "buildMetadata='$buildMetadata'" +
-                ")"
-    }
+    override fun toString(): String = "SemanticVersion(" +
+            "majorVersion=$majorVersion, " +
+            "minorVersion=$minorVersion, " +
+            "patchVersion=$patchVersion, " +
+            "preRelease='$preRelease', " +
+            "buildMetadata='$buildMetadata'" +
+            ")"
 }

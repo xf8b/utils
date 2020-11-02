@@ -18,6 +18,7 @@ version = property("currentVersion")
 
 repositories {
     mavenCentral()
+    jcenter()
 }
 
 dependencies {
