@@ -3,13 +3,15 @@ plugins {
     `java-library`
     `maven-publish`
     kotlin("jvm") version "1.4.10"
+    id("org.jetbrains.dokka") version "1.4.10.2"
     id("net.minecrell.licenser") version "0.4.1"
+    id("com.github.ben-manes.versions") version "0.34.0"
 }
 
 fun property(name: String): Any = project.findProperty(name)
     ?: throw NoSuchElementException("No property found for name $name!")
 
-fun propertyOrEnv(propertyName: String, envName: String): Any = project.findProperty(propertyName)
+fun propertyOrEnv(propertyName: String, envName: String = propertyName): Any = project.findProperty(propertyName)
     ?: System.getenv(envName)
 
 group = property("mavenGroup")
@@ -17,15 +19,11 @@ version = property("currentVersion")
 
 repositories {
     mavenCentral()
+    jcenter()
 }
 
 dependencies {
     testImplementation("junit:junit:${property("junitVersion")}")
-}
-
-java {
-    withSourcesJar()
-    withJavadocJar()
 }
 
 tasks {
@@ -45,10 +43,23 @@ tasks {
     }
 }
 
+val sourcesJar by tasks.creating(Jar::class) {
+    archiveClassifier.set("sources")
+    from(sourceSets["main"].allSource)
+}
+
+val javadocJar by tasks.creating(Jar::class) {
+    dependsOn("dokkaJavadoc")
+    archiveClassifier.set("javadoc")
+    from("build/dokka/javadoc")
+}
+
 publishing {
     publications {
-        create<MavenPublication>("mavenJava") {
-            from(components["java"])
+        create<MavenPublication>("maven") {
+            artifact(sourcesJar)
+            artifact(javadocJar)
+            from(components["kotlin"])
         }
     }
 

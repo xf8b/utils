@@ -22,7 +22,7 @@ package io.github.xf8b.utils.sorting
 import org.junit.Assert.assertTrue
 import org.junit.Test
 
-class MapSortersTest {
+class MapSortersTests {
     @Test
     fun `test sorting a map of ints`() {
         val map: Map<Int, String> = mapOf(3 to "4", 5 to "6", 2 to "2")
