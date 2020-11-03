@@ -5,6 +5,7 @@ plugins {
     kotlin("jvm") version "1.4.10"
     id("org.jetbrains.dokka") version "1.4.10.2"
     id("net.minecrell.licenser") version "0.4.1"
+    id("com.github.ben-manes.versions") version "0.34.0"
 }
 
 fun property(name: String): Any = project.findProperty(name)
@@ -50,7 +51,7 @@ val sourcesJar by tasks.creating(Jar::class) {
 val javadocJar by tasks.creating(Jar::class) {
     dependsOn("dokkaJavadoc")
     archiveClassifier.set("javadoc")
-    from(tasks.javadoc)
+    from("build/dokka/javadoc")
 }
 
 publishing {
