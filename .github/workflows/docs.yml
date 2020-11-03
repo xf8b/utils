@@ -25,7 +25,7 @@ jobs:
       - name: Commit files
         run: |
           git config --local user.name "Github Actions"
-          git add ./utils/build/dokka/html/
+          git add ./utils/build/dokka/html/ -f
           git commit -m "Deploy docs from commit" -a
       - name: Push to Github
         run: git push origin https://github.com/$GITHUB_REPOSITORY.git refs/heads/gh-pages:gh-pages
