@@ -1,0 +1,30 @@
+name: Generate Documentation
+
+on:
+  push:
+    branches: [ production ]
+  pull_request:
+    branches: [ production ]
+
+jobs:
+  docs:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up JDK 14
+        uses: actions/setup-java@v1
+        with:
+          java-version: 14
+      - name: Grant execute permission for gradlew
+        run: chmod +x gradlew
+      - name: Generate Documentation
+        run: ./gradlew dokkaHtml
+        env:
+          REPSY_USERNAME: ${{ secrets.REPSY_USERNAME }}
+          REPSY_PASSWORD: ${{ secrets.REPSY_PASSWORD }}
+      - name: Commit files
+        run: |
+          git config --local user.name "Github Actions"
+          git commit -m "Deploy docs from commit" -a
+      - name: Push to Github
+        run: git push origin https://github.com/$GITHUB_REPOSITORY.git refs/heads/gh-pages:gh-pages
