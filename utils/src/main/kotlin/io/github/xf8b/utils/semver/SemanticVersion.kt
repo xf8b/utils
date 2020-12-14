@@ -22,11 +22,6 @@ package io.github.xf8b.utils.semver
 /**
  * An **immutable** object which represents a semantic version.
  * @param version the version to parse a semantic version from
- * @property majorVersion the major version, as defined in [https://semver.org/]
- * @property minorVersion the minor version, as defined in [https://semver.org/]
- * @property patchVersion the patch version, as defined in [https://semver.org/]
- * @property preRelease the pre-release label, as defined in [https://semver.org/]
- * @property buildMetadata the build metadata label, as defined in [https://semver.org/]
  * @throws IllegalArgumentException if the version does not follow semantic versioning
  * @since 1.0.0-alpha4
  * @author xf8b
@@ -41,11 +36,13 @@ class SemanticVersion(version: String) {
     init {
         if (version matches SEMVER_REGEX.toRegex()) {
             val matchResult = SEMVER_REGEX.toRegex().find(version)!!
-            majorVersion = matchResult.destructured.component1().toInt()
-            minorVersion = matchResult.destructured.component2().toInt()
-            patchVersion = matchResult.destructured.component3().toInt()
-            preRelease = matchResult.destructured.component4()
-            buildMetadata = matchResult.destructured.component5()
+            matchResult.destructured.apply {
+                majorVersion = component1().toInt()
+                minorVersion = component2().toInt()
+                patchVersion = component3().toInt()
+                preRelease = component4()
+                buildMetadata = component5()
+            }
         } else {
             throw IllegalArgumentException("Version '$version' does not conform to SemVer!")
         }
@@ -58,7 +55,7 @@ class SemanticVersion(version: String) {
          * Taken from [the Semantic Versioning website](https://semver.org/#is-there-a-suggested-regular-expression-regex-to-check-a-semver-string).
          */
         const val SEMVER_REGEX: String =
-            "^(0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*)(?:-((?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\\.(?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\\+([0-9a-zA-Z-]+(?:\\.[0-9a-zA-Z-]+)*))?$"
+                "^(0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*)(?:-((?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\\.(?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\\+([0-9a-zA-Z-]+(?:\\.[0-9a-zA-Z-]+)*))?$"
     }
 
     fun toStringVersion(): String {
@@ -96,10 +93,11 @@ class SemanticVersion(version: String) {
         result = 31 * result + patchVersion.hashCode()
         result = 31 * result + preRelease.hashCode()
         result = 31 * result + buildMetadata.hashCode()
+
         return result
     }
 
-    override fun toString(): String = "SemanticVersion(" +
+    override fun toString() = "SemanticVersion(" +
             "majorVersion=$majorVersion, " +
             "minorVersion=$minorVersion, " +
             "patchVersion=$patchVersion, " +

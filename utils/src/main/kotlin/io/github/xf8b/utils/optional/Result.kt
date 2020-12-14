@@ -75,6 +75,53 @@ class Result<out T>(result: T?, errorMessage: String?, val resultType: ResultTyp
     val errorMessage: String? = errorMessage
         get() = field ?: throw NoSuchElementException("No error message is present!")
 
+    /**
+     * Getter for if this result's type is a [ResultType.SUCCESS].
+     *
+     * Useful for code that should be executed when there is a successful result.
+     */
+    fun isSuccess() = resultType == ResultType.SUCCESS
+
+    /**
+     * Getter for if this result's type is a [ResultType.FAILURE].
+     *
+     * Useful for code that should be executed when there is a failed result.
+     */
+    fun isFailure() = resultType == ResultType.FAILURE
+
+    /**
+     * Getter for if this result's type is a [ResultType.PASS].
+     *
+     * Useful for code that should be executed when there is a passed result.
+     */
+    fun isPass() = resultType == ResultType.PASS
+
+    override fun equals(other: Any?): Boolean {
+        if (this === other) return true
+        if (javaClass != other?.javaClass) return false
+
+        other as Result<*>
+
+        if (result != other.result) return false
+        if (errorMessage != other.errorMessage) return false
+        if (resultType != other.resultType) return false
+
+        return true
+    }
+
+    override fun hashCode(): Int {
+        var result = result?.hashCode() ?: 0
+        result = 31 * result + (errorMessage?.hashCode() ?: 0)
+        result = 31 * result + resultType.hashCode()
+        return result
+    }
+
+    override fun toString() = "Result(" +
+            "result=$result, " +
+            "errorMessage=$errorMessage, " +
+            "resultType=$resultType" +
+            ")"
+
     companion object {
         /**
          * Static method to create a [Result] that represents a successful computation.
@@ -111,57 +158,4 @@ class Result<out T>(result: T?, errorMessage: String?, val resultType: ResultTyp
          */
         FAILURE;
     }
-
-    @Deprecated(message = "Use isSuccess - Scheduled for removal in alpha5", replaceWith = ReplaceWith("isSuccess()"))
-    fun isResultPresent() = isSuccess()
-
-    /**
-     * Getter for if this result's type is a [ResultType.SUCCESS].
-     *
-     * Useful for code that should be executed when there is a successful result.
-     */
-    fun isSuccess() = resultType == ResultType.SUCCESS
-
-    @Deprecated(message = "Use isFailure - Scheduled for removal in alpha5", replaceWith = ReplaceWith("isFailure()"))
-    fun isErrorMessagePresent() = isFailure()
-
-    /**
-     * Getter for if this result's type is a [ResultType.FAILURE].
-     *
-     * Useful for code that should be executed when there is a failed result.
-     */
-    fun isFailure() = resultType == ResultType.FAILURE
-
-    /**
-     * Getter for if this result's type is a [ResultType.PASS].
-     *
-     * Useful for code that should be executed when there is a passed result.
-     */
-    fun isPass() = resultType == ResultType.PASS
-
-    override fun equals(other: Any?): Boolean {
-        if (this === other) return true
-        if (javaClass != other?.javaClass) return false
-
-        other as Result<*>
-
-        if (result != other.result) return false
-        if (errorMessage != other.errorMessage) return false
-        if (resultType != other.resultType) return false
-
-        return true
-    }
-
-    override fun hashCode(): Int {
-        var result = result?.hashCode() ?: 0
-        result = 31 * result + (errorMessage?.hashCode() ?: 0)
-        result = 31 * result + resultType.hashCode()
-        return result
-    }
-
-    override fun toString(): String = "Result(" +
-            "result=$result, " +
-            "errorMessage=$errorMessage, " +
-            "resultType=$resultType" +
-            ")"
 }

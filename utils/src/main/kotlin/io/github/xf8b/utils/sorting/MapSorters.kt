@@ -22,12 +22,13 @@ package io.github.xf8b.utils.sorting
 import java.util.*
 import java.util.Map.Entry.comparingByValue
 
-//credit: https://stackoverflow.com/questions/109383/sort-a-mapkey-value-by-values
-//modified to be in kotlin and be an extension function
+// credit: https://stackoverflow.com/questions/109383/sort-a-mapkey-value-by-values
+// modified to be in kotlin and be an extension function
 fun <K, V : Comparable<V>> Map<K, V>.sortByValue(): Map<K, V> {
-    val list: ArrayList<Map.Entry<K, V>> = ArrayList(this.entries)
+    val list = ArrayList(this.entries)
     list.sortWith(comparingByValue())
-    val result: MutableMap<K, V> = LinkedHashMap()
+    val result = LinkedHashMap<K, V>()
     list.forEach { result[it.key] = it.value }
+
     return result
 }
