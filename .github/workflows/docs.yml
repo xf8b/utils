@@ -25,8 +25,9 @@ jobs:
       - name: Commit files
         run: |
           git config --local user.name "Github Actions"
-          git fetch origin
           git checkout -b gh-pages origin/gh-pages
+          git fetch origin
+          git merge
           cp -r ./utils/build/dokka/html/ docs
           touch ./docs/.nojekyll
           git add ./docs/ -f
