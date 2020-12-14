@@ -48,8 +48,8 @@ fun <T> Result<T>.toOptional() = result.toOptional() to errorMessage.toOptional(
  * @return A [Result] from the [Pair].
  */
 fun <T> Pair<Optional<T>, Optional<String>>.toResult() = when {
-    first.isEmpty -> Result.failure(second.toNullable()!!)
-    second.isEmpty -> Result.success(first.toNullable()!!)
-    first.isEmpty && second.isEmpty -> Result.pass()
+    !first.isPresent && !second.isPresent -> Result.pass()
+    !first.isPresent -> Result.failure(second.toNullable()!!)
+    !second.isPresent -> Result.success(first.toNullable()!!)
     else -> throw UnexpectedException("Unexpected reach of 'else' branch")
 }

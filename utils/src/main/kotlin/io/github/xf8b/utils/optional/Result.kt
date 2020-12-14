@@ -116,7 +116,7 @@ class Result<out T>(result: T?, errorMessage: String?, val resultType: ResultTyp
         return result
     }
 
-    override fun toString(): String = "Result(" +
+    override fun toString() = "Result(" +
             "result=$result, " +
             "errorMessage=$errorMessage, " +
             "resultType=$resultType" +
