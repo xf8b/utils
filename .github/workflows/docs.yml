@@ -25,6 +25,7 @@ jobs:
       - name: Setup local branch
         run: |
           git config --local user.name "Github Actions"
+          git fetch origin
           git checkout -b gh-pages --track origin/gh-pages
       - name: Commit files
         run: |
