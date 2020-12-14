@@ -1,0 +1,265 @@
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>Result</title>
+    <link href="../../../images/logo-icon.svg" rel="icon" type="image/svg">
+    <script>var pathToRoot = "../../../";</script>
+    <script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async="async"></script>
+    <link href="../../../styles/style.css" rel="Stylesheet">
+    <link href="../../../styles/logo-styles.css" rel="Stylesheet">
+    <link href="../../../styles/jetbrains-mono.css" rel="Stylesheet">
+    <link href="../../../styles/main.css" rel="Stylesheet">
+    <script type="text/javascript" src="../../../scripts/clipboard.js" async="async"></script>
+    <script type="text/javascript" src="../../../scripts/navigation-loader.js" async="async"></script>
+    <script type="text/javascript" src="../../../scripts/platform-content-handler.js" async="async"></script>
+    <script type="text/javascript" src="../../../scripts/main.js" async="async"></script>
+  </head>
+  <body>
+    <div id="container">
+      <div id="leftColumn">
+        <div id="logo"></div>
+        <div id="paneSearch"></div>
+        <div id="sideMenu"></div>
+      </div>
+      <div id="main">
+        <div id="leftToggler"><span class="icon-toggler"></span></div>
+        <script type="text/javascript" src="../../../scripts/pages.js"></script>
+        <script type="text/javascript" src="../../../scripts/main.js"></script>
+        <div class="main-content" id="content" pageIds="io.github.xf8b.utils.optional/Result///PointingToDeclaration//1720235782">
+          <div class="navigation-wrapper" id="navigation-wrapper">
+            <div class="breadcrumbs"><a href="../../index.html">utils</a>/<a href="../index.html">io.github.xf8b.utils.optional</a>/<a href="index.html">Result</a></div>
+            <div class="pull-right d-flex">
+              <div id="searchBar"></div>
+            </div>
+          </div>
+          <div class="cover ">
+            <h1 class="cover"><span>Result</span></h1>
+            <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":utils:dokkaHtml/main"><div class="symbol monospace">class <a href="index.html">Result</a>&lt;out <a href="index.html">T</a>&gt;(result: <a href="index.html">T</a>?, errorMessage: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a>?, resultType: <a href="-result-type/index.html">Result.ResultType</a>)<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><p class="paragraph">A object which represents a possible <a href="index.html">T</a> result.</p><p class="paragraph">Result types include:</p><ul><li><p class="paragraph"><a href="-result-type/-s-u-c-c-e-s-s/index.html">ResultType.SUCCESS</a>: when there is no error, and the result is present.</p></li><li><p class="paragraph"><a href="-result-type/-p-a-s-s/index.html">ResultType.PASS</a>: when there is no error, but there is no result present.</p></li><li><p class="paragraph"><a href="-result-type/-f-a-i-l-u-r-e/index.html">ResultType.FAILURE</a>: when there is an error, and there is no result present.</p></li></ul><p class="paragraph">Getting the <a href="result.html">result</a> or the <a href="error-message.html">errorMessage</a> without checking the <a href="result-type.html">resultType</a> will cause a <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-no-such-element-exception/index.html">NoSuchElementException</a>.</p><p class="paragraph">The <a href="result-type.html">resultType</a> is always present.</p><p class="paragraph">The recommended way to create a <a href="index.html">Result</a> is to use one of the following static methods:</p><ul><li><p class="paragraph"><a href="-companion/success.html">success</a>: when the result has been computed and there are no errors</p></li><li><p class="paragraph"><a href="-companion/pass.html">pass</a>: when there is no result computed but no error</p></li><li><p class="paragraph"><a href="-companion/failure.html">failure</a>: when an error has happened during the computation of the result</p></li></ul><p class="paragraph">Note: When using <a href="-companion/success.html">success</a>, the <a href="result.html">result</a> passed in may not be null.</p><h4 class="">Since</h4><p class="paragraph">1.0.0-alpha1</p><h4 class="">Author</h4><p class="paragraph">xf8b</p></div></div>
+          </div>
+          <div class="tabbedcontent">
+            <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="Types">Types</button><button class="section-tab" data-togglable="Constructors">Constructors</button><button class="section-tab" data-togglable="Functions">Functions</button><button class="section-tab" data-togglable="Properties">Properties</button><button class="section-tab" data-togglable="Extensions">Extensions</button></div>
+            <div class="tabs-section-body">
+              <h2 class="tabbedcontent">Constructors</h2>
+              <div class="table" data-togglable="Constructors"><a data-name="%5Bio.github.xf8b.utils.optional%2FResult%2FResult%2F%23TypeParam%28bounds%3D%5Bkotlin.Any%3F%5D%29%3F%23kotlin.String%3F%23io.github.xf8b.utils.optional.Result.ResultType%2FPointingToDeclaration%2F%5D%2FConstructors%2F1720235782" anchor-label="Result" id="%5Bio.github.xf8b.utils.optional%2FResult%2FResult%2F%23TypeParam%28bounds%3D%5Bkotlin.Any%3F%5D%29%3F%23kotlin.String%3F%23io.github.xf8b.utils.optional.Result.ResultType%2FPointingToDeclaration%2F%5D%2FConstructors%2F1720235782" data-filterable-set=":utils:dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":utils:dokkaHtml/main" data-filterable-set=":utils:dokkaHtml/main">
+                  <div class="main-subrow keyValue TabbedContent">
+                    <div class=""><span class="inline-flex"><a href="-result.html">Result</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="%5Bio.github.xf8b.utils.optional%2FResult%2FResult%2F%23TypeParam%28bounds%3D%5Bkotlin.Any%3F%5D%29%3F%23kotlin.String%3F%23io.github.xf8b.utils.optional.Result.ResultType%2FPointingToDeclaration%2F%5D%2FConstructors%2F1720235782"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title">
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":utils:dokkaHtml/main"><div class="symbol monospace">fun &lt;out <a href="index.html">T</a>&gt; <a href="-result.html">Result</a>(result: <a href="index.html">T</a>?, errorMessage: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a>?, resultType: <a href="-result-type/index.html">Result.ResultType</a>)<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief ">recommended to use <a href="-companion/success.html">success</a>, <a href="-companion/failure.html">failure</a> or <a href="-companion/pass.html">pass</a> instead of the constructor</div></div></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <h2 class="">Types</h2>
+              <div class="table" data-togglable="Types"><a data-name="%5Bio.github.xf8b.utils.optional%2FResult.Companion%2F%2F%2FPointingToDeclaration%2F%5D%2FClasslikes%2F1720235782" anchor-label="Companion" id="%5Bio.github.xf8b.utils.optional%2FResult.Companion%2F%2F%2FPointingToDeclaration%2F%5D%2FClasslikes%2F1720235782" data-filterable-set=":utils:dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":utils:dokkaHtml/main" data-filterable-set=":utils:dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="-companion/index.html">Companion</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="%5Bio.github.xf8b.utils.optional%2FResult.Companion%2F%2F%2FPointingToDeclaration%2F%5D%2FClasslikes%2F1720235782"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":utils:dokkaHtml/main" data-filterable-set=":utils:dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":utils:dokkaHtml/main"><div class="symbol monospace">object <a href="-companion/index.html">Companion</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+</div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="%5Bio.github.xf8b.utils.optional%2FResult.ResultType%2F%2F%2FPointingToDeclaration%2F%5D%2FClasslikes%2F1720235782" anchor-label="ResultType" id="%5Bio.github.xf8b.utils.optional%2FResult.ResultType%2F%2F%2FPointingToDeclaration%2F%5D%2FClasslikes%2F1720235782" data-filterable-set=":utils:dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":utils:dokkaHtml/main" data-filterable-set=":utils:dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="-result-type/index.html">ResultType</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="%5Bio.github.xf8b.utils.optional%2FResult.ResultType%2F%2F%2FPointingToDeclaration%2F%5D%2FClasslikes%2F1720235782"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":utils:dokkaHtml/main" data-filterable-set=":utils:dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":utils:dokkaHtml/main"><div class="symbol monospace">enum <a href="-result-type/index.html">ResultType</a> : <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-enum/index.html">Enum</a>&lt;<a href="-result-type/index.html">Result.ResultType</a>&gt; <span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+</div>
+</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <h2 class="">Functions</h2>
+              <div class="table" data-togglable="Functions"><a data-name="%5Bio.github.xf8b.utils.optional%2FResult%2Fequals%2F%23kotlin.Any%3F%2FPointingToDeclaration%2F%5D%2FFunctions%2F1720235782" anchor-label="equals" id="%5Bio.github.xf8b.utils.optional%2FResult%2Fequals%2F%23kotlin.Any%3F%2FPointingToDeclaration%2F%5D%2FFunctions%2F1720235782" data-filterable-set=":utils:dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":utils:dokkaHtml/main" data-filterable-set=":utils:dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="equals.html">equals</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="%5Bio.github.xf8b.utils.optional%2FResult%2Fequals%2F%23kotlin.Any%3F%2FPointingToDeclaration%2F%5D%2FFunctions%2F1720235782"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":utils:dokkaHtml/main" data-filterable-set=":utils:dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":utils:dokkaHtml/main"><div class="symbol monospace">open operator override fun <a href="equals.html">equals</a>(other: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html">Any</a>?): <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+</div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="%5Bio.github.xf8b.utils.optional%2FResult%2FhashCode%2F%23%2FPointingToDeclaration%2F%5D%2FFunctions%2F1720235782" anchor-label="hashCode" id="%5Bio.github.xf8b.utils.optional%2FResult%2FhashCode%2F%23%2FPointingToDeclaration%2F%5D%2FFunctions%2F1720235782" data-filterable-set=":utils:dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":utils:dokkaHtml/main" data-filterable-set=":utils:dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="hash-code.html">hashCode</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="%5Bio.github.xf8b.utils.optional%2FResult%2FhashCode%2F%23%2FPointingToDeclaration%2F%5D%2FFunctions%2F1720235782"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":utils:dokkaHtml/main" data-filterable-set=":utils:dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":utils:dokkaHtml/main"><div class="symbol monospace">open override fun <a href="hash-code.html">hashCode</a>(): <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+</div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="%5Bio.github.xf8b.utils.optional%2FResult%2FisFailure%2F%23%2FPointingToDeclaration%2F%5D%2FFunctions%2F1720235782" anchor-label="isFailure" id="%5Bio.github.xf8b.utils.optional%2FResult%2FisFailure%2F%23%2FPointingToDeclaration%2F%5D%2FFunctions%2F1720235782" data-filterable-set=":utils:dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":utils:dokkaHtml/main" data-filterable-set=":utils:dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="is-failure.html">isFailure</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="%5Bio.github.xf8b.utils.optional%2FResult%2FisFailure%2F%23%2FPointingToDeclaration%2F%5D%2FFunctions%2F1720235782"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":utils:dokkaHtml/main" data-filterable-set=":utils:dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":utils:dokkaHtml/main"><div class="symbol monospace">fun <a href="is-failure.html">isFailure</a>(): <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+<a data-name="%5Bio.github.xf8b.utils.optional%2FResult%2FisFailure%2F%23%2FPointingToDeclaration%2F%5D%2FFunctions%2F1720235782" anchor-label="isFailure" id="%5Bio.github.xf8b.utils.optional%2FResult%2FisFailure%2F%23%2FPointingToDeclaration%2F%5D%2FFunctions%2F1720235782" data-filterable-set=":utils:dokkaHtml/main"></a><div class="brief "><a data-name="%5Bio.github.xf8b.utils.optional%2FResult%2FisFailure%2F%23%2FPointingToDeclaration%2F%5D%2FFunctions%2F1720235782" anchor-label="isFailure" id="%5Bio.github.xf8b.utils.optional%2FResult%2FisFailure%2F%23%2FPointingToDeclaration%2F%5D%2FFunctions%2F1720235782" data-filterable-set=":utils:dokkaHtml/main"></a>Getter for if this result's type is a <a href="-result-type/-f-a-i-l-u-r-e/index.html">ResultType.FAILURE</a>.</div></div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="%5Bio.github.xf8b.utils.optional%2FResult%2FisPass%2F%23%2FPointingToDeclaration%2F%5D%2FFunctions%2F1720235782" anchor-label="isPass" id="%5Bio.github.xf8b.utils.optional%2FResult%2FisPass%2F%23%2FPointingToDeclaration%2F%5D%2FFunctions%2F1720235782" data-filterable-set=":utils:dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":utils:dokkaHtml/main" data-filterable-set=":utils:dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="is-pass.html">isPass</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="%5Bio.github.xf8b.utils.optional%2FResult%2FisPass%2F%23%2FPointingToDeclaration%2F%5D%2FFunctions%2F1720235782"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":utils:dokkaHtml/main" data-filterable-set=":utils:dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":utils:dokkaHtml/main"><div class="symbol monospace">fun <a href="is-pass.html">isPass</a>(): <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+<a data-name="%5Bio.github.xf8b.utils.optional%2FResult%2FisPass%2F%23%2FPointingToDeclaration%2F%5D%2FFunctions%2F1720235782" anchor-label="isPass" id="%5Bio.github.xf8b.utils.optional%2FResult%2FisPass%2F%23%2FPointingToDeclaration%2F%5D%2FFunctions%2F1720235782" data-filterable-set=":utils:dokkaHtml/main"></a><div class="brief "><a data-name="%5Bio.github.xf8b.utils.optional%2FResult%2FisPass%2F%23%2FPointingToDeclaration%2F%5D%2FFunctions%2F1720235782" anchor-label="isPass" id="%5Bio.github.xf8b.utils.optional%2FResult%2FisPass%2F%23%2FPointingToDeclaration%2F%5D%2FFunctions%2F1720235782" data-filterable-set=":utils:dokkaHtml/main"></a>Getter for if this result's type is a <a href="-result-type/-p-a-s-s/index.html">ResultType.PASS</a>.</div></div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="%5Bio.github.xf8b.utils.optional%2FResult%2FisSuccess%2F%23%2FPointingToDeclaration%2F%5D%2FFunctions%2F1720235782" anchor-label="isSuccess" id="%5Bio.github.xf8b.utils.optional%2FResult%2FisSuccess%2F%23%2FPointingToDeclaration%2F%5D%2FFunctions%2F1720235782" data-filterable-set=":utils:dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":utils:dokkaHtml/main" data-filterable-set=":utils:dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="is-success.html">isSuccess</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="%5Bio.github.xf8b.utils.optional%2FResult%2FisSuccess%2F%23%2FPointingToDeclaration%2F%5D%2FFunctions%2F1720235782"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":utils:dokkaHtml/main" data-filterable-set=":utils:dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":utils:dokkaHtml/main"><div class="symbol monospace">fun <a href="is-success.html">isSuccess</a>(): <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+<a data-name="%5Bio.github.xf8b.utils.optional%2FResult%2FisSuccess%2F%23%2FPointingToDeclaration%2F%5D%2FFunctions%2F1720235782" anchor-label="isSuccess" id="%5Bio.github.xf8b.utils.optional%2FResult%2FisSuccess%2F%23%2FPointingToDeclaration%2F%5D%2FFunctions%2F1720235782" data-filterable-set=":utils:dokkaHtml/main"></a><div class="brief "><a data-name="%5Bio.github.xf8b.utils.optional%2FResult%2FisSuccess%2F%23%2FPointingToDeclaration%2F%5D%2FFunctions%2F1720235782" anchor-label="isSuccess" id="%5Bio.github.xf8b.utils.optional%2FResult%2FisSuccess%2F%23%2FPointingToDeclaration%2F%5D%2FFunctions%2F1720235782" data-filterable-set=":utils:dokkaHtml/main"></a>Getter for if this result's type is a <a href="-result-type/-s-u-c-c-e-s-s/index.html">ResultType.SUCCESS</a>.</div></div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="%5Bio.github.xf8b.utils.optional%2FResult%2FtoString%2F%23%2FPointingToDeclaration%2F%5D%2FFunctions%2F1720235782" anchor-label="toString" id="%5Bio.github.xf8b.utils.optional%2FResult%2FtoString%2F%23%2FPointingToDeclaration%2F%5D%2FFunctions%2F1720235782" data-filterable-set=":utils:dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":utils:dokkaHtml/main" data-filterable-set=":utils:dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="to-string.html">toString</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="%5Bio.github.xf8b.utils.optional%2FResult%2FtoString%2F%23%2FPointingToDeclaration%2F%5D%2FFunctions%2F1720235782"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":utils:dokkaHtml/main" data-filterable-set=":utils:dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":utils:dokkaHtml/main"><div class="symbol monospace">open override fun <a href="to-string.html">toString</a>(): <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+</div>
+</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <h2 class="">Properties</h2>
+              <div class="table" data-togglable="Properties"><a data-name="%5Bio.github.xf8b.utils.optional%2FResult%2FerrorMessage%2F%23%2FPointingToDeclaration%2F%5D%2FProperties%2F1720235782" anchor-label="errorMessage" id="%5Bio.github.xf8b.utils.optional%2FResult%2FerrorMessage%2F%23%2FPointingToDeclaration%2F%5D%2FProperties%2F1720235782" data-filterable-set=":utils:dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":utils:dokkaHtml/main" data-filterable-set=":utils:dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="error-message.html">errorMessage</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="%5Bio.github.xf8b.utils.optional%2FResult%2FerrorMessage%2F%23%2FPointingToDeclaration%2F%5D%2FProperties%2F1720235782"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title">
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":utils:dokkaHtml/main"><a data-name="%5Bio.github.xf8b.utils.optional%2FResult%2FerrorMessage%2F%23%2FPointingToDeclaration%2F%5D%2FProperties%2F1720235782" anchor-label="errorMessage" id="%5Bio.github.xf8b.utils.optional%2FResult%2FerrorMessage%2F%23%2FPointingToDeclaration%2F%5D%2FProperties%2F1720235782" data-filterable-set=":utils:dokkaHtml/main"></a><div class="symbol monospace">val <a href="error-message.html">errorMessage</a>: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a>?<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><a data-name="%5Bio.github.xf8b.utils.optional%2FResult%2FerrorMessage%2F%23%2FPointingToDeclaration%2F%5D%2FProperties%2F1720235782" anchor-label="errorMessage" id="%5Bio.github.xf8b.utils.optional%2FResult%2FerrorMessage%2F%23%2FPointingToDeclaration%2F%5D%2FProperties%2F1720235782" data-filterable-set=":utils:dokkaHtml/main"></a>The error message, if there was any error.</div></div></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="%5Bio.github.xf8b.utils.optional%2FResult%2Fresult%2F%23%2FPointingToDeclaration%2F%5D%2FProperties%2F1720235782" anchor-label="result" id="%5Bio.github.xf8b.utils.optional%2FResult%2Fresult%2F%23%2FPointingToDeclaration%2F%5D%2FProperties%2F1720235782" data-filterable-set=":utils:dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":utils:dokkaHtml/main" data-filterable-set=":utils:dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="result.html">result</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="%5Bio.github.xf8b.utils.optional%2FResult%2Fresult%2F%23%2FPointingToDeclaration%2F%5D%2FProperties%2F1720235782"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title">
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":utils:dokkaHtml/main"><a data-name="%5Bio.github.xf8b.utils.optional%2FResult%2Fresult%2F%23%2FPointingToDeclaration%2F%5D%2FProperties%2F1720235782" anchor-label="result" id="%5Bio.github.xf8b.utils.optional%2FResult%2Fresult%2F%23%2FPointingToDeclaration%2F%5D%2FProperties%2F1720235782" data-filterable-set=":utils:dokkaHtml/main"></a><div class="symbol monospace">val <a href="result.html">result</a>: <a href="index.html">T</a>?<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><a data-name="%5Bio.github.xf8b.utils.optional%2FResult%2Fresult%2F%23%2FPointingToDeclaration%2F%5D%2FProperties%2F1720235782" anchor-label="result" id="%5Bio.github.xf8b.utils.optional%2FResult%2Fresult%2F%23%2FPointingToDeclaration%2F%5D%2FProperties%2F1720235782" data-filterable-set=":utils:dokkaHtml/main"></a>The result.</div></div></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="%5Bio.github.xf8b.utils.optional%2FResult%2FresultType%2F%23%2FPointingToDeclaration%2F%5D%2FProperties%2F1720235782" anchor-label="resultType" id="%5Bio.github.xf8b.utils.optional%2FResult%2FresultType%2F%23%2FPointingToDeclaration%2F%5D%2FProperties%2F1720235782" data-filterable-set=":utils:dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":utils:dokkaHtml/main" data-filterable-set=":utils:dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="result-type.html">resultType</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="%5Bio.github.xf8b.utils.optional%2FResult%2FresultType%2F%23%2FPointingToDeclaration%2F%5D%2FProperties%2F1720235782"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title">
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":utils:dokkaHtml/main"><a data-name="%5Bio.github.xf8b.utils.optional%2FResult%2FresultType%2F%23%2FPointingToDeclaration%2F%5D%2FProperties%2F1720235782" anchor-label="resultType" id="%5Bio.github.xf8b.utils.optional%2FResult%2FresultType%2F%23%2FPointingToDeclaration%2F%5D%2FProperties%2F1720235782" data-filterable-set=":utils:dokkaHtml/main"></a><div class="symbol monospace">val <a href="result-type.html">resultType</a>: <a href="-result-type/index.html">Result.ResultType</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><a data-name="%5Bio.github.xf8b.utils.optional%2FResult%2FresultType%2F%23%2FPointingToDeclaration%2F%5D%2FProperties%2F1720235782" anchor-label="resultType" id="%5Bio.github.xf8b.utils.optional%2FResult%2FresultType%2F%23%2FPointingToDeclaration%2F%5D%2FProperties%2F1720235782" data-filterable-set=":utils:dokkaHtml/main"></a>the non-null result type</div></div></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <h2 class="tabbedcontent">Extensions</h2>
+              <div class="table" data-togglable="Extensions"><a data-name="%5Bio.github.xf8b.utils.optional%2F%2FtoOptional%2Fio.github.xf8b.utils.optional.Result%5BTypeParam%28bounds%3D%5Bkotlin.Any%3F%5D%29%5D%23%2FPointingToDeclaration%2F%5D%2FExtensions%2F1720235782" anchor-label="toOptional" id="%5Bio.github.xf8b.utils.optional%2F%2FtoOptional%2Fio.github.xf8b.utils.optional.Result%5BTypeParam%28bounds%3D%5Bkotlin.Any%3F%5D%29%5D%23%2FPointingToDeclaration%2F%5D%2FExtensions%2F1720235782" data-filterable-set=":utils:dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":utils:dokkaHtml/main" data-filterable-set=":utils:dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="../to-optional.html">toOptional</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="%5Bio.github.xf8b.utils.optional%2F%2FtoOptional%2Fio.github.xf8b.utils.optional.Result%5BTypeParam%28bounds%3D%5Bkotlin.Any%3F%5D%29%5D%23%2FPointingToDeclaration%2F%5D%2FExtensions%2F1720235782"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":utils:dokkaHtml/main" data-filterable-set=":utils:dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":utils:dokkaHtml/main"><div class="symbol monospace">fun &lt;<a href="../to-optional.html">T</a>&gt; <a href="index.html">Result</a>&lt;<a href="../to-optional.html">T</a>&gt;.<a href="../to-optional.html">toOptional</a>(): <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-pair/index.html">Pair</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/util/Optional.html">Optional</a>&lt;<a href="../to-optional.html">T</a>&gt;, <a href="https://docs.oracle.com/javase/8/docs/api/java/util/Optional.html">Optional</a>&lt;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a>&gt;&gt;<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+<a data-name="%5Bio.github.xf8b.utils.optional%2F%2FtoOptional%2Fio.github.xf8b.utils.optional.Result%5BTypeParam%28bounds%3D%5Bkotlin.Any%3F%5D%29%5D%23%2FPointingToDeclaration%2F%5D%2FExtensions%2F1720235782" anchor-label="toOptional" id="%5Bio.github.xf8b.utils.optional%2F%2FtoOptional%2Fio.github.xf8b.utils.optional.Result%5BTypeParam%28bounds%3D%5Bkotlin.Any%3F%5D%29%5D%23%2FPointingToDeclaration%2F%5D%2FExtensions%2F1720235782" data-filterable-set=":utils:dokkaHtml/main"></a><div class="brief "><a data-name="%5Bio.github.xf8b.utils.optional%2F%2FtoOptional%2Fio.github.xf8b.utils.optional.Result%5BTypeParam%28bounds%3D%5Bkotlin.Any%3F%5D%29%5D%23%2FPointingToDeclaration%2F%5D%2FExtensions%2F1720235782" anchor-label="toOptional" id="%5Bio.github.xf8b.utils.optional%2F%2FtoOptional%2Fio.github.xf8b.utils.optional.Result%5BTypeParam%28bounds%3D%5Bkotlin.Any%3F%5D%29%5D%23%2FPointingToDeclaration%2F%5D%2FExtensions%2F1720235782" data-filterable-set=":utils:dokkaHtml/main"></a>Note: <a href="../to-optional.html">T</a> is the result type, and the <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a> is the error message.</div></div>
+</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="footer"><span class="go-to-top-icon"><a href="#content"></a></span><span>© 2020 Copyright</span><span class="pull-right"><span>Sponsored and developed by dokka</span><a href="https://github.com/Kotlin/dokka"><span class="padded-icon"></span></a></span></div>
+      </div>
+    </div>
+  </body>
+</html>
+
