@@ -17,8 +17,9 @@
  * along with Utils.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package io.github.xf8b.utils.tuples
+package io.github.xf8b.utils.exceptions
 
-infix fun <A, B> A.and(that: B) = this to that
-
-infix fun <A, B, C> Pair<A, B>.and(that: C) = Triple(first, second, that)
+/**
+ * An exception thrown when an unexpected input, output, result or other thing is recieved.
+ */
+class UnexpectedException(message: String = "unexpected") : Error(message)

@@ -1,21 +1,24 @@
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile as CompileKotlin
+
 plugins {
     java
     `java-library`
     `maven-publish`
-    kotlin("jvm") version "1.4.10"
-    id("org.jetbrains.dokka") version "1.4.10.2"
+    kotlin("jvm") version "1.4.21"
+    id("org.jetbrains.dokka") version "1.4.20"
     id("net.minecrell.licenser") version "0.4.1"
-    id("com.github.ben-manes.versions") version "0.34.0"
+    id("com.github.ben-manes.versions") version "0.36.0"
 }
 
-fun property(name: String): Any = project.findProperty(name)
-    ?: throw NoSuchElementException("No property found for name $name!")
+fun property(name: String) = project.findProperty(name)
+        ?: throw NoSuchElementException("No property found for name $name!")
 
-fun propertyOrEnv(propertyName: String, envName: String = propertyName): Any = project.findProperty(propertyName)
-    ?: System.getenv(envName)
+fun propertyOrEnv(propertyName: String, envName: String = propertyName) = project.findProperty(propertyName)
+        ?: System.getenv(envName)
 
 group = property("mavenGroup")
 version = property("currentVersion")
+base.archivesBaseName = property("archivesBaseName") as String
 
 repositories {
     mavenCentral()
@@ -30,16 +33,16 @@ tasks {
     jar {
         manifest {
             attributes(
-                mapOf(
-                    "Implementation-Title" to project.name,
-                    "Implementation-Version" to project.version
-                )
+                    mapOf(
+                            "Implementation-Title" to project.name,
+                            "Implementation-Version" to project.version
+                    )
             )
         }
     }
 
-    compileKotlin {
-        kotlinOptions.jvmTarget = "14"
+    withType<CompileKotlin>().configureEach {
+        kotlinOptions.jvmTarget = "1.8"
     }
 }
 
@@ -65,7 +68,7 @@ publishing {
 
     repositories {
         maven(
-            "https://repo.repsy.io/mvn/${propertyOrEnv("repsyUsername", "REPSY_USERNAME")}/${property("repsyRepoName")}"
+                "https://repo.repsy.io/mvn/${propertyOrEnv("repsyUsername", "REPSY_USERNAME")}/${property("repsyRepoName")}"
         ) {
             credentials {
                 username = propertyOrEnv("repsyUsername", "REPSY_USERNAME") as String

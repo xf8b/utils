@@ -21,28 +21,35 @@
 
 package io.github.xf8b.utils.optional
 
+import io.github.xf8b.utils.exceptions.UnexpectedException
 import java.util.*
 
 //to optional/null value
-fun <T> T?.toOptional(): Optional<T> = Optional.ofNullable(this)
+fun <T> T?.toOptional() = Optional.ofNullable(this)
 
-fun <T> Optional<T>.toValueOrNull(): T? = this.orElse(null)
+fun <T> Optional<T>.toNullable(): T? = this.orElse(null)
+
+@Deprecated(
+        message = "Use toNullable! This is scheduled for removal in 1.0.0-alpha6!",
+        replaceWith = ReplaceWith("toNullable()")
+)
+fun <T> Optional<T>.toValueOrNull(): T? = this.toNullable()
 
 /**
  * Note: [T] is the result type, and the [String] is the error message.
  *
  * @return A [Pair] of an Optional<[T]> (the result) and an Optional<[String]> (the error message).
  */
-fun <T> Result<T>.toOptional(): Pair<Optional<T>, Optional<String>> = result.toOptional() to errorMessage.toOptional()
+fun <T> Result<T>.toOptional() = result.toOptional() to errorMessage.toOptional()
 
 /**
  * Note: [T] is the result type, and the [String] is the error message.
  *
  * @return A [Result] from the [Pair].
  */
-fun <T> Pair<Optional<T>, Optional<String>>.toResult(): Result<T> = when {
+fun <T> Pair<Optional<T>, Optional<String>>.toResult() = when {
+    first.isEmpty -> Result.failure(second.toNullable()!!)
+    second.isEmpty -> Result.success(first.toNullable()!!)
     first.isEmpty && second.isEmpty -> Result.pass()
-    first.isEmpty -> Result.failure(second.get())
-    second.isEmpty -> Result.success(first.get())
-    else -> throw IllegalStateException("All branches should have been accounted for")
+    else -> throw UnexpectedException("Unexpected reach of 'else' branch")
 }

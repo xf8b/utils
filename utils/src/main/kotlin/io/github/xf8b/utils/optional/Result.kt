@@ -75,55 +75,12 @@ class Result<out T>(result: T?, errorMessage: String?, val resultType: ResultTyp
     val errorMessage: String? = errorMessage
         get() = field ?: throw NoSuchElementException("No error message is present!")
 
-    companion object {
-        /**
-         * Static method to create a [Result] that represents a successful computation.
-         */
-        @JvmStatic
-        fun <T> success(result: T) = Result<T>(result, null, ResultType.SUCCESS)
-
-        /**
-         * Static method to create a [Result] that represents a failure of computing the result.
-         */
-        @JvmStatic
-        fun <T> failure(errorMessage: String) = Result<T>(null, errorMessage, ResultType.FAILURE)
-
-        /**
-         * Static method to create a [Result] that represents a no error but also no result computation.
-         */
-        @JvmStatic
-        fun <T> pass() = Result<T>(null, null, ResultType.PASS)
-    }
-
-    enum class ResultType {
-        /**
-         * Result type for success. Use when there is no error and the result has been computed.
-         */
-        SUCCESS,
-
-        /**
-         * Result type for passing. Use when there is no error but there has been no result computed.
-         */
-        PASS,
-
-        /**
-         * Result type for failure. Use when there is an error while computing the result.
-         */
-        FAILURE;
-    }
-
-    @Deprecated(message = "Use isSuccess - Scheduled for removal in alpha5", replaceWith = ReplaceWith("isSuccess()"))
-    fun isResultPresent() = isSuccess()
-
     /**
      * Getter for if this result's type is a [ResultType.SUCCESS].
      *
      * Useful for code that should be executed when there is a successful result.
      */
     fun isSuccess() = resultType == ResultType.SUCCESS
-
-    @Deprecated(message = "Use isFailure - Scheduled for removal in alpha5", replaceWith = ReplaceWith("isFailure()"))
-    fun isErrorMessagePresent() = isFailure()
 
     /**
      * Getter for if this result's type is a [ResultType.FAILURE].
@@ -164,4 +121,41 @@ class Result<out T>(result: T?, errorMessage: String?, val resultType: ResultTyp
             "errorMessage=$errorMessage, " +
             "resultType=$resultType" +
             ")"
+
+    companion object {
+        /**
+         * Static method to create a [Result] that represents a successful computation.
+         */
+        @JvmStatic
+        fun <T> success(result: T) = Result<T>(result, null, ResultType.SUCCESS)
+
+        /**
+         * Static method to create a [Result] that represents a failure of computing the result.
+         */
+        @JvmStatic
+        fun <T> failure(errorMessage: String) = Result<T>(null, errorMessage, ResultType.FAILURE)
+
+        /**
+         * Static method to create a [Result] that represents a no error but also no result computation.
+         */
+        @JvmStatic
+        fun <T> pass() = Result<T>(null, null, ResultType.PASS)
+    }
+
+    enum class ResultType {
+        /**
+         * Result type for success. Use when there is no error and the result has been computed.
+         */
+        SUCCESS,
+
+        /**
+         * Result type for passing. Use when there is no error but there has been no result computed.
+         */
+        PASS,
+
+        /**
+         * Result type for failure. Use when there is an error while computing the result.
+         */
+        FAILURE;
+    }
 }
