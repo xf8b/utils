@@ -22,12 +22,12 @@ jobs:
         env:
           REPSY_USERNAME: ${{ secrets.REPSY_USERNAME }}
           REPSY_PASSWORD: ${{ secrets.REPSY_PASSWORD }}
-      - name: Commit files
+      - name: Setup local branch
         run: |
           git config --local user.name "Github Actions"
-          git checkout -b gh-pages origin/gh-pages
-          git fetch origin
-          git merge
+          git checkout -b gh-pages --track origin/gh-pages
+      - name: Commit files
+        run: |
           cp -r ./utils/build/dokka/html/ docs
           touch ./docs/.nojekyll
           git add ./docs/ -f
