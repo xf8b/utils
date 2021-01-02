@@ -19,6 +19,12 @@
 
 package io.github.xf8b.utils.tuples
 
-infix fun <A, B> A.and(that: B) = this to that
+/**
+ * Alias for [to].
+ */
+public infix fun <A, B> A.and(that: B): Pair<A, B> = this to that
 
-infix fun <A, B, C> Pair<A, B>.and(that: C) = Triple(first, second, that)
+/**
+ * "Adds" [that] to this [Pair], creating a [Triple].
+ */
+public infix fun <A, B, C> Pair<A, B>.and(that: C): Triple<A, B, C> = Triple(first, second, that)

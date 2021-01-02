@@ -24,11 +24,19 @@ import java.util.Map.Entry.comparingByValue
 
 // credit: https://stackoverflow.com/questions/109383/sort-a-mapkey-value-by-values
 // modified to be in kotlin and be an extension function
-fun <K, V : Comparable<V>> Map<K, V>.sortByValue(): Map<K, V> {
+/**
+ * Sorts this map by value using [comparingByValue] and returns the sorted map.
+ *
+ * @author Stack Overflow
+ */
+public fun <K, V : Comparable<V>> Map<K, V>.sortByValue(): Map<K, V> {
     val list = ArrayList(this.entries)
+
     list.sortWith(comparingByValue())
+
     val result = LinkedHashMap<K, V>()
-    list.forEach { result[it.key] = it.value }
+
+    for ((key, value) in list) result[key] = value
 
     return result
 }

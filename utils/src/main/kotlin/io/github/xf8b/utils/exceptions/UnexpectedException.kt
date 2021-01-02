@@ -20,6 +20,6 @@
 package io.github.xf8b.utils.exceptions
 
 /**
- * An exception thrown when an unexpected input, output, result or other thing is recieved.
+ * An exception thrown when an unexpected input, output, result or other thing is received.
  */
-class UnexpectedException(message: String = "unexpected") : Error(message)
+public class UnexpectedException(message: String = "unexpected") : Error(message)

@@ -21,20 +21,27 @@ package io.github.xf8b.utils.gson
 
 import com.google.gson.*
 
-class JsonDsl {
+public class JsonDsl {
     private val properties: MutableMap<String, JsonElement> = mutableMapOf()
 
-    fun `object`(name: String, apply: JsonDsl.() -> Unit) {
-        val dsl = JsonDsl()
-        apply(dsl)
-        properties[name] = dsl.toJsonElement()
+    /**
+     * Adds a new [JSON object][JsonObject] to the properties.
+     */
+    public fun `object`(name: String, apply: JsonDsl.() -> Unit) {
+        properties[name] = JsonDsl().apply(apply).toJsonElement()
     }
 
-    fun array(name: String, vararg elements: JsonElement) {
+    /**
+     * Adds a new [JSON array][JsonArray] to the properties.
+     */
+    public fun array(name: String, vararg elements: JsonElement) {
         properties[name] = elements.toJsonArray()
     }
 
-    fun array(name: String, apply: JsonArray.() -> Unit) {
+    /**
+     * Adds a new [JSON array][JsonArray] to the properties.
+     */
+    public fun array(name: String, apply: JsonArray.() -> Unit) {
         properties[name] = JsonArray().apply(apply)
     }
 
@@ -50,33 +57,54 @@ class JsonDsl {
         }
     }
 
-    fun property(key: String, value: JsonElement) {
+    /**
+     * Adds a new [JSON element][JsonElement] to the properties.
+     */
+    public fun property(key: String, value: JsonElement) {
         internalProperty(key, value)
     }
 
-    fun property(key: String, value: Boolean?) {
+    /**
+     * Adds a new [Boolean] [JSON primitive][JsonPrimitive] property to the properties.
+     */
+    public fun property(key: String, value: Boolean?) {
         internalProperty(key, value)
     }
 
-    fun property(key: String, value: Number?) {
+    /**
+     * Adds a new [Number] [JSON primitive][JsonPrimitive] property to the properties.
+     */
+    public fun property(key: String, value: Number?) {
         internalProperty(key, value)
     }
 
-    fun property(key: String, value: String?) {
+    /**
+     * Adds a new [String] [JSON primitive][JsonPrimitive] property to the properties.
+     */
+    public fun property(key: String, value: String?) {
         internalProperty(key, value)
     }
 
-    fun property(key: String, value: Char?) {
+    /**
+     * Adds a new [Char] [JSON primitive][JsonPrimitive] property to the properties.
+     */
+    public fun property(key: String, value: Char?) {
         internalProperty(key, value)
     }
 
-    fun nullProperty(key: String) {
+    /**
+     * Adds a new [JSON null][JsonNull] property to the properties.
+     */
+    public fun nullProperty(key: String) {
         internalProperty(key, null)
     }
 
-    fun toJsonElement() = JsonObject().apply { properties.forEach(this::add) }
+    /**
+     * Converts this [JsonDsl] to a [JsonObject].
+     */
+    public fun toJsonElement(): JsonObject = JsonObject().apply { properties.forEach(this::add) }
 
-    override fun equals(other: Any?): Boolean {
+    public override fun equals(other: Any?): Boolean {
         if (this === other) return true
         if (other !is JsonDsl) return false
 
@@ -85,9 +113,12 @@ class JsonDsl {
         return true
     }
 
-    override fun hashCode() = properties.hashCode()
+    public override fun hashCode(): Int = properties.hashCode()
 
-    override fun toString() = this.toJsonElement().toString()
+    public override fun toString(): String = this.toJsonElement().toString()
 }
 
-fun json(apply: JsonDsl.() -> Unit) = JsonDsl().apply(apply)
+/**
+ * Creates a new [JsonDsl], applies [apply] to it, and returns the result.
+ */
+public fun json(apply: JsonDsl.() -> Unit): JsonDsl = JsonDsl().apply(apply)

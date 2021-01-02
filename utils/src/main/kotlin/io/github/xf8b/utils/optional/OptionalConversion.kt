@@ -24,32 +24,30 @@ package io.github.xf8b.utils.optional
 import io.github.xf8b.utils.exceptions.UnexpectedException
 import java.util.*
 
-//to optional/null value
-fun <T> T?.toOptional() = Optional.ofNullable(this)
-
-fun <T> Optional<T>.toNullable(): T? = this.orElse(null)
-
-@Deprecated(
-    message = "Use toNullable! This is scheduled for removal in 1.0.0-alpha6!",
-    replaceWith = ReplaceWith("toNullable()")
-)
-fun <T> Optional<T>.toValueOrNull(): T? = this.toNullable()
+// to optional/null value
 
 /**
- * Note: [T] is the result type, and the [String] is the error message.
- *
- * @return A [Pair] of an Optional<[T]> (the result) and an Optional<[String]> (the error message).
+ * Converts a nullable [T] to an [Optional].
  */
-fun <T> Result<T>.toOptional() = result.toOptional() to errorMessage.toOptional()
+public fun <T> T?.toOptional(): Optional<T> = Optional.ofNullable(this)
 
 /**
- * Note: [T] is the result type, and the [String] is the error message.
- *
- * @return A [Result] from the [Pair].
+ * Converts an [Optional] to a nullable [T].
  */
-fun <T> Pair<Optional<T>, Optional<String>>.toResult() = when {
+public fun <T> Optional<T>.toNullable(): T? = this.orElse(null)
+
+/**
+ * Converts a [Result] to a [Pair], the first value being the [optional result][Optional] and the second being the [optional error message][Optional].
+ */
+public fun <T> Result<T>.toOptional(): Pair<Optional<T>, Optional<String>> =
+    result.toOptional() to errorMessage.toOptional()
+
+/**
+ * Converts a [Pair] (the first value being the [optional result][Optional] and the second being the [optional error message][Optional]) to a [Result].
+ */
+public fun <T> Pair<Optional<T>, Optional<String>>.toResult(): Result<T> = when {
     !first.isPresent && !second.isPresent -> Result.pass()
-    !first.isPresent -> Result.failure(second.toNullable()!!)
-    !second.isPresent -> Result.success(first.toNullable()!!)
+    !first.isPresent -> Result.failure(second.get())
+    !second.isPresent -> Result.success(first.get()!!)
     else -> throw UnexpectedException("Unexpected reach of 'else' branch")
 }

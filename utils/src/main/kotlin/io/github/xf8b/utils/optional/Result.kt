@@ -39,14 +39,10 @@ package io.github.xf8b.utils.optional
  *
  * **Note: When using [success], the [result] passed in may not be null.**
  *
- * @property result the possibly null result
- * @property errorMessage the possibly null error message
- * @property resultType the non-null result type
- * @constructor recommended to use [success], [failure] or [pass] instead of the constructor
  * @since 1.0.0-alpha1
  * @author xf8b
  */
-class Result<out T>(result: T?, errorMessage: String?, val resultType: ResultType) {
+public class Result<out T>(result: T?, errorMessage: String?, val resultType: ResultType) {
     /**
      * The result. **May be null**.
      *
@@ -57,7 +53,7 @@ class Result<out T>(result: T?, errorMessage: String?, val resultType: ResultTyp
      *
      * @throws NoSuchElementException when no result is present
      */
-    val result: T? = result
+    public val result: T? = result
         get() = field ?: throw NoSuchElementException("No result is present!")
 
     /**
@@ -72,7 +68,7 @@ class Result<out T>(result: T?, errorMessage: String?, val resultType: ResultTyp
      *
      * @throws NoSuchElementException when no error message is present.
      */
-    val errorMessage: String? = errorMessage
+    public val errorMessage: String? = errorMessage
         get() = field ?: throw NoSuchElementException("No error message is present!")
 
     /**
@@ -80,23 +76,23 @@ class Result<out T>(result: T?, errorMessage: String?, val resultType: ResultTyp
      *
      * Useful for code that should be executed when there is a successful result.
      */
-    fun isSuccess() = resultType == ResultType.SUCCESS
+    public fun isSuccess(): Boolean = resultType == ResultType.SUCCESS
 
     /**
      * Getter for if this result's type is a [ResultType.FAILURE].
      *
      * Useful for code that should be executed when there is a failed result.
      */
-    fun isFailure() = resultType == ResultType.FAILURE
+    public fun isFailure(): Boolean = resultType == ResultType.FAILURE
 
     /**
      * Getter for if this result's type is a [ResultType.PASS].
      *
      * Useful for code that should be executed when there is a passed result.
      */
-    fun isPass() = resultType == ResultType.PASS
+    public fun isPass(): Boolean = resultType == ResultType.PASS
 
-    override fun equals(other: Any?): Boolean {
+    public override fun equals(other: Any?): Boolean {
         if (this === other) return true
         if (javaClass != other?.javaClass) return false
 
@@ -109,40 +105,40 @@ class Result<out T>(result: T?, errorMessage: String?, val resultType: ResultTyp
         return true
     }
 
-    override fun hashCode(): Int {
+    public override fun hashCode(): Int {
         var result = result?.hashCode() ?: 0
         result = 31 * result + (errorMessage?.hashCode() ?: 0)
         result = 31 * result + resultType.hashCode()
         return result
     }
 
-    override fun toString() = "Result(" +
+    public override fun toString(): String = "Result(" +
             "result=$result, " +
             "errorMessage=$errorMessage, " +
             "resultType=$resultType" +
             ")"
 
-    companion object {
+    public companion object {
         /**
          * Static method to create a [Result] that represents a successful computation.
          */
         @JvmStatic
-        fun <T> success(result: T) = Result<T>(result, null, ResultType.SUCCESS)
+        public fun <T> success(result: T): Result<T> = Result<T>(result, null, ResultType.SUCCESS)
 
         /**
          * Static method to create a [Result] that represents a failure of computing the result.
          */
         @JvmStatic
-        fun <T> failure(errorMessage: String) = Result<T>(null, errorMessage, ResultType.FAILURE)
+        public fun <T> failure(errorMessage: String): Result<T> = Result<T>(null, errorMessage, ResultType.FAILURE)
 
         /**
          * Static method to create a [Result] that represents a no error but also no result computation.
          */
         @JvmStatic
-        fun <T> pass() = Result<T>(null, null, ResultType.PASS)
+        public fun <T> pass(): Result<T> = Result<T>(null, null, ResultType.PASS)
     }
 
-    enum class ResultType {
+    public enum class ResultType {
         /**
          * Result type for success. Use when there is no error and the result has been computed.
          */

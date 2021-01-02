@@ -26,15 +26,30 @@ import com.google.gson.JsonPrimitive
 
 // thing -> json element
 
-fun Boolean?.toJsonElement() = if (this == null) JsonNull.INSTANCE else JsonPrimitive(this)
+/**
+ * Converts this [Boolean] to a [JsonPrimitive], or [JsonNull] if `this` is null.
+ */
+public fun Boolean?.toJsonElement(): JsonElement = if (this == null) JsonNull.INSTANCE else JsonPrimitive(this)
 
-fun Number?.toJsonElement() = if (this == null) JsonNull.INSTANCE else JsonPrimitive(this)
+/**
+ * Converts this [Number] to a [JsonPrimitive], or [JsonNull] if `this` is null.
+ */
+public fun Number?.toJsonElement(): JsonElement = if (this == null) JsonNull.INSTANCE else JsonPrimitive(this)
 
-fun String?.toJsonElement() = if (this == null) JsonNull.INSTANCE else JsonPrimitive(this)
+/**
+ * Converts this [String] to a [JsonPrimitive], or [JsonNull] if `this` is null.
+ */
+public fun String?.toJsonElement(): JsonElement = if (this == null) JsonNull.INSTANCE else JsonPrimitive(this)
 
-fun Char?.toJsonElement() = if (this == null) JsonNull.INSTANCE else JsonPrimitive(this)
+/**
+ * Converts this [Char] to a [JsonPrimitive], or [JsonNull] if `this` is null.
+ */
+public fun Char?.toJsonElement(): JsonElement = if (this == null) JsonNull.INSTANCE else JsonPrimitive(this)
 
-fun Array<out JsonElement>.toJsonArray(): JsonArray {
+/**
+ * Converts this [Array] to a [JsonArray].
+ */
+public fun Array<out JsonElement>.toJsonArray(): JsonArray {
     val array = JsonArray()
 
     this.forEach(array::add)
