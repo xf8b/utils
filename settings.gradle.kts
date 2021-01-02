@@ -1,7 +1,6 @@
 rootProject.name = "Utils"
 
-include("utils")
-include("utils-gson")
+include("utils", "utils-gson")
 
 pluginManagement {
     repositories {

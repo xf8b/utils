@@ -30,8 +30,8 @@ fun <T> T?.toOptional() = Optional.ofNullable(this)
 fun <T> Optional<T>.toNullable(): T? = this.orElse(null)
 
 @Deprecated(
-        message = "Use toNullable! This is scheduled for removal in 1.0.0-alpha6!",
-        replaceWith = ReplaceWith("toNullable()")
+    message = "Use toNullable! This is scheduled for removal in 1.0.0-alpha6!",
+    replaceWith = ReplaceWith("toNullable()")
 )
 fun <T> Optional<T>.toValueOrNull(): T? = this.toNullable()
 
