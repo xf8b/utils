@@ -19,8 +19,8 @@ fun hasPropertyOrEnv(propertyName: String, envName: String = propertyName) = roo
         || System.getenv().containsKey(envName)
 
 group = property("mavenGroup")
-version = property("currentVersion")
 base.archivesBaseName = "utils"
+version = property("currentVersion")
 
 repositories {
     mavenCentral()
