@@ -20,9 +20,9 @@
 package io.github.xf8b.utils.semver
 
 import io.github.xf8b.utils.semver.SemanticVersion.Companion.SEMVER_REGEX
-import org.junit.Assert.assertFalse
-import org.junit.Assert.assertTrue
-import org.junit.Test
+import org.junit.jupiter.api.Assertions.assertFalse
+import org.junit.jupiter.api.Assertions.assertTrue
+import org.junit.jupiter.api.Test
 
 class SemanticVersionTests {
     @Test
@@ -47,17 +47,15 @@ class SemanticVersionTests {
 
     @Test
     fun `test semver to string`() {
-        val versionsToTest: Array<String> = arrayOf(
+        val versionsToTest = arrayOf(
             "1.2.5-alpha.6+build.23",
             "4.5.6",
             "6.4.3-rc.1",
             "3.4.5+build.43"
         )
 
-        versionsToTest.forEach { version ->
-            val semanticVersion = SemanticVersion(version)
-
-            assertTrue(semanticVersion.toStringVersion() == version)
+        versionsToTest.map { it to SemanticVersion(it) }.forEach { (stringVersion, semanticVersion) ->
+            assertTrue(semanticVersion.toStringVersion() == stringVersion)
         }
     }
 }
