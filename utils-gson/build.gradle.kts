@@ -20,7 +20,8 @@ fun hasPropertyOrEnv(propertyName: String, envName: String = propertyName) = roo
 
 group = property("mavenGroup")
 version = property("currentVersion")
-base.archivesBaseName = "utils"
+base.archivesBaseName = "utils-gson"
+
 
 repositories {
     mavenCentral()
@@ -28,6 +29,9 @@ repositories {
 }
 
 dependencies {
+    // using gson 2.8.0 because Minecraft
+    implementation("com.google.code.gson:gson:2.8.0")
+
     testImplementation("org.junit.jupiter:junit-jupiter:${property("junitVersion")}")
 }
 

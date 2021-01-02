@@ -19,23 +19,29 @@
 
 package io.github.xf8b.utils.sorting
 
-import org.junit.Assert.assertTrue
-import org.junit.Test
+import org.junit.jupiter.api.Assertions.assertTrue
+import org.junit.jupiter.api.Test
 
 class MapSortersTests {
     @Test
-    fun `test sorting a map of ints`() {
-        val map: Map<Int, String> = mapOf(3 to "4", 5 to "6", 2 to "2")
-        //after sorting, should be mapOf(2 to '2', 3 to '4', 5 to '6')
-        val sortedMap: LinkedHashMap<Int, String> = map.sortByValue() as LinkedHashMap<Int, String>
+    fun `test sorting a map of ints to strings`() {
+        val map = mapOf(3 to '4', 5 to '6', 2 to '2')
+
+        // after sorting, should be mapOf(2 to '2', 3 to '4', 5 to '6')
+        val sortedMap = map.sortByValue()
         println(sortedMap)
-        sortedMap.onEachIndexed { index: Int, entry: Map.Entry<Int, String> ->
-            if (index == 0) {
-                assertTrue(entry.value == "2")
-            }
-            if (index == 2) {
-                assertTrue(entry.value == "6")
-            }
-        }
+
+        assertTrue(sortedMap == mapOf(2 to '2', 3 to '4', 5 to '6'))
+    }
+
+    @Test
+    fun `test sorting a map of chars to strings`() {
+        val map = mapOf('b' to "bruh", 'c' to "bean", 'a' to "pro", 'z' to "app").also { println("Original: $it") }
+
+        // after sorting, should be mapOf('z' to "app", 'c' to "bean", 'b' to "bruh", 'a' to "pro")
+        val sortedMap = map.toSortedMap()
+        println("Sorted: $sortedMap")
+
+        assertTrue(sortedMap == mapOf('z' to "app", 'c' to "bean", 'b' to "bruh", 'a' to "pro"))
     }
 }

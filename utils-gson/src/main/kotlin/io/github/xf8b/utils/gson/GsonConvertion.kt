@@ -17,26 +17,27 @@
  * along with Utils.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package io.github.xf8b.utils.optional
+package io.github.xf8b.utils.gson
 
-import org.junit.jupiter.api.Assertions.assertFalse
-import org.junit.jupiter.api.Assertions.assertTrue
-import org.junit.jupiter.api.Test
+import com.google.gson.JsonArray
+import com.google.gson.JsonElement
+import com.google.gson.JsonNull
+import com.google.gson.JsonPrimitive
 
-class ResultTests {
-    @Test
-    fun `test result isX`() {
-        val result = Result.success(2.0f)
+// thing -> json element
 
-        assertFalse(result.isFailure())
-        assertFalse(result.isPass())
-        assertTrue(result.isSuccess())
-    }
+fun Boolean?.toJsonElement() = if (this == null) JsonNull.INSTANCE else JsonPrimitive(this)
 
-    @Test
-    fun `test static factory methods`() {
-        assertTrue(Result.success(0).resultType == Result.ResultType.SUCCESS)
-        assertTrue(Result.pass<Number>().resultType == Result.ResultType.PASS)
-        assertTrue(Result.failure<Number>("bruh").resultType == Result.ResultType.FAILURE)
-    }
+fun Number?.toJsonElement() = if (this == null) JsonNull.INSTANCE else JsonPrimitive(this)
+
+fun String?.toJsonElement() = if (this == null) JsonNull.INSTANCE else JsonPrimitive(this)
+
+fun Char?.toJsonElement() = if (this == null) JsonNull.INSTANCE else JsonPrimitive(this)
+
+fun Array<out JsonElement>.toJsonArray(): JsonArray {
+    val array = JsonArray()
+
+    this.forEach(array::add)
+
+    return array
 }
